@@ -17,6 +17,7 @@
   --muted: #5a6075;
   --line: #d7d9de;
   --accent: #e2366f;
+  --brand: #1e3a8a;
   --accent-ink: #ffffff;
   --display: "Unbounded", "Arial Black", system-ui, sans-serif;
   --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -25,12 +26,12 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #12162a; --surface: #1b2140; --ink: #eef0f6; --muted: #a3a9bf;
-    --line: #2e3558; --accent: #ff5a8e; --accent-ink: #12162a; color-scheme: dark;
+    --line: #2e3558; --accent: #ff5a8e; --brand: #8fa8ff; --accent-ink: #12162a; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #12162a; --surface: #1b2140; --ink: #eef0f6; --muted: #a3a9bf;
-  --line: #2e3558; --accent: #ff5a8e; --accent-ink: #12162a; color-scheme: dark;
+  --line: #2e3558; --accent: #ff5a8e; --brand: #8fa8ff; --accent-ink: #12162a; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { background: var(--paper); color: var(--ink); font: 16px/1.6 var(--body); }
@@ -45,7 +46,7 @@ p { margin: 0; }
 .demo-note { background: var(--ink); color: var(--paper); font: 500 12px/1.5 var(--mono); text-align: center; padding: 8px 16px; }
 
 nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; flex-wrap: wrap; }
-.logo { font: 800 20px var(--display); letter-spacing: -.02em; text-decoration: none; }
+.logo { font: 800 20px var(--display); letter-spacing: -.02em; text-decoration: none; color: var(--brand); }
 .logo span { color: var(--accent); }
 .nav-links { display: flex; gap: 20px; flex-wrap: wrap; font-weight: 600; font-size: 15px; }
 .nav-links a { text-decoration: none; }
@@ -58,7 +59,7 @@ nav { display: flex; align-items: center; justify-content: space-between; gap: 1
 .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; padding-block: 40px 64px; }
 .hero > * { min-width: 0; }
 .hero h1 { font-size: clamp(38px, 7vw, 76px); font-weight: 800; line-height: 1.02; letter-spacing: -.03em; }
-.hero h1 em { font-style: normal; color: var(--accent); }
+.hero h1 em { font-style: normal; color: var(--brand); }
 .hero p.lead { font-size: 19px; color: var(--muted); max-width: 34ch; margin-top: 20px; }
 .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
 .who { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
