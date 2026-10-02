@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'empreinte · Merch sur mesure pour BDE, assos et entreprises</title>
+<meta name="description" content="L'empreinte crée votre merch sur mesure : sweats, hoodies, t-shirts brodés ou imprimés pour BDE, lycées, associations, bars et entreprises.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: page de vente en une colonne, hero typographique + "patch brodé", processus en étapes, formulaire de devis */
+:root {
+  --paper: #f2f3ef;
+  --surface: #ffffff;
+  --ink: #18203a;
+  --muted: #5a6075;
+  --line: #d7d9de;
+  --accent: #e2366f;
+  --accent-ink: #ffffff;
+  --display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12162a; --surface: #1b2140; --ink: #eef0f6; --muted: #a3a9bf;
+    --line: #2e3558; --accent: #ff5a8e; --accent-ink: #12162a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12162a; --surface: #1b2140; --ink: #eef0f6; --muted: #a3a9bf;
+  --line: #2e3558; --accent: #ff5a8e; --accent-ink: #12162a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.6 var(--body); }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+a { color: inherit; }
+.label { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.15; }
+h3 { font-size: 18px; font-weight: 500; }
+p { margin: 0; }
+
+.demo-note { background: var(--ink); color: var(--paper); font: 500 12px/1.5 var(--mono); text-align: center; padding: 8px 16px; }
+
+nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; flex-wrap: wrap; }
+.logo { font: 800 20px var(--display); letter-spacing: -.02em; text-decoration: none; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 20px; flex-wrap: wrap; font-weight: 600; font-size: 15px; }
+.nav-links a { text-decoration: none; }
+.nav-links a:hover { color: var(--accent); }
+
+.btn { display: inline-block; font: 700 15px var(--body); padding: 14px 22px; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: var(--ink); text-decoration: none; cursor: pointer; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; padding-block: 40px 64px; }
+.hero > * { min-width: 0; }
+.hero h1 { font-size: clamp(38px, 7vw, 76px); font-weight: 800; line-height: 1.02; letter-spacing: -.03em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p.lead { font-size: 19px; color: var(--muted); max-width: 34ch; margin-top: 20px; }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.who { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.who span { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600; }
+
+/* le "patch brodé" */
+.patch { aspect-ratio: 1; max-width: 100%; width: 360px; justify-self: center; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; text-align: center; position: relative; padding: 40px; transform: rotate(-6deg); }
+.patch::before { content: ""; position: absolute; inset: 14px; border-radius: 50%; border: 3px dashed var(--accent); }
+.patch strong { font: 800 clamp(26px, 4vw, 40px)/1 var(--display); letter-spacing: -.02em; display: block; }
+.patch small { display: block; font: 500 12px/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; margin-top: 12px; opacity: .8; }
+
+section { padding-block: 64px; border-top: 1px solid var(--line); }
+.section-head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 640px; }
+.section-head p { color: var(--muted); }
+
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; gap: 8px; align-content: start; }
+.steps li::before { content: counter(s); font: 800 40px/1 var(--display); color: var(--accent); }
+.steps p { color: var(--muted); font-size: 15px; }
+
+.techs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tech { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; gap: 10px; align-content: start; }
+.tech p { color: var(--muted); font-size: 15px; }
+.tech .label { color: var(--accent); }
+
+.products { display: flex; flex-wrap: wrap; gap: 10px; }
+.products span { font: 500 clamp(18px, 2.4vw, 24px) var(--display); padding: 10px 18px; border: 2px solid var(--ink); border-radius: 999px; }
+
+.quote { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+.quote > * { min-width: 0; }
+.quote aside { display: grid; gap: 16px; align-content: start; }
+.quote aside p { color: var(--muted); }
+.quote aside ul { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
+form { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+label { font-weight: 700; font-size: 14px; }
+input, select, textarea { font: 15px var(--body); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; width: 100%; }
+textarea { min-height: 96px; resize: vertical; }
+.field-title { font-weight: 700; font-size: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { font-weight: 600; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; display: flex; gap: 6px; align-items: center; }
+.chips input { width: auto; accent-color: var(--accent); }
+.done { grid-column: 1 / -1; background: var(--paper); border: 2px dashed var(--accent); border-radius: 12px; padding: 16px; }
+
+footer { padding-block: 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 820px) {
+  .hero, .quote { grid-template-columns: 1fr; }
+  .patch { width: 260px; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .techs { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .steps, form { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .patch { transition: transform .4s ease; }
+  .patch:hover { transform: rotate(0deg) scale(1.02); }
+}
+body { margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top">L'empreinte<span>.</span></a>
+    <div class="nav-links">
+      <a href="#comment">Comment ça marche</a>
+      <a href="#techniques">Techniques</a>
+      <a href="#devis">Devis</a>
+    </div>
+    <a class="btn primary" href="#devis">Demander un devis</a>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <span class="label">Merch sur mesure</span>
+      <h1>Votre merch, à <em>votre empreinte.</em></h1>
+      <p class="lead">Sweats, t-shirts et accessoires personnalisés pour votre équipe, vos adhérents ou vos clients. On s'occupe de tout, du design à la livraison.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#devis">Lancer mon projet</a>
+        <a class="btn" href="#comment">Voir comment ça marche</a>
+      </div>
+      <div class="who" aria-label="Pour qui">
+        <span>BDE</span><span>Lycées</span><span>Associations</span><span>Bars</span><span>Clubs</span><span>Entreprises</span>
+      </div>
+    </div>
+    <div class="patch" aria-hidden="true">
+      <div>
+        <strong>Ton logo<br>ici.</strong>
+        <small>Brodé · DTG · DTF</small>
+      </div>
+    </div>
+  </header>
+
+  <section id="comment">
+    <div class="section-head">
+      <span class="label">Comment ça marche</span>
+      <h2>De l'idée au carton livré chez vous</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>On en parle</h3><p>Vous nous dites ce que vous voulez : produit, quantité, budget, date. Ou on vous propose une idée.</p></li>
+      <li><h3>On le dessine ensemble</h3><p>Design, couleurs, matière, qualité du tissu et technique d'impression. Vous validez la maquette.</p></li>
+      <li><h3>On lance la production</h3><p>Un acompte de 30 % (ou le paiement complet) et on passe commande auprès de nos ateliers partenaires.</p></li>
+      <li><h3>Livré chez vous</h3><p>Les pièces arrivent directement à votre adresse. Vous réglez le solde, tout le monde est content.</p></li>
+    </ol>
+  </section>
+
+  <section id="techniques">
+    <div class="section-head">
+      <span class="label">Techniques</span>
+      <h2>La bonne technique pour chaque design</h2>
+      <p>On vous conseille selon votre visuel, le tissu et la quantité.</p>
+    </div>
+    <div class="techs">
+      <article class="tech"><span class="label">Broderie</span><h3>Le rendu premium</h3><p>Fil cousu directement dans le tissu. Idéal pour un logo sur le cœur d'un sweat ou une casquette. Ultra résistant au lavage.</p></article>
+      <article class="tech"><span class="label">DTG</span><h3>Impression directe</h3><p>L'encre est imprimée dans les fibres du coton. Parfait pour les visuels détaillés et les dégradés, même en petite série.</p></article>
+      <article class="tech"><span class="label">DTF</span><h3>Le transfert polyvalent</h3><p>Le visuel est imprimé sur un film puis pressé à chaud. Couleurs vives, fonctionne sur presque toutes les matières.</p></article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="label">Produits</span>
+      <h2>Ce qu'on peut personnaliser</h2>
+    </div>
+    <div class="products">
+      <span>Sweats</span><span>Hoodies</span><span>T-shirts</span><span>Polos</span><span>Casquettes</span><span>Tote bags</span><span>Et plus…</span>
+    </div>
+  </section>
+
+  <section id="devis">
+    <div class="quote">
+      <aside>
+        <span class="label">Devis gratuit</span>
+        <h2>Parlez-nous de votre projet</h2>
+        <p>Remplissez le formulaire, on revient vers vous avec une proposition et un prix.</p>
+        <ul>
+          <li>Réponse rapide</li>
+          <li>Conseils sur le design et les matières</li>
+          <li>Aucun engagement avant validation</li>
+        </ul>
+      </aside>
+      <form id="quote-form" name="devis" method="POST" data-netlify="true" action="/merci.html" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="devis">
+        <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+        <div class="field">
+          <label for="f-name">Votre nom</label>
+          <input id="f-name" name="name" placeholder="Prénom Nom" required>
+        </div>
+        <div class="field">
+          <label for="f-org">Structure</label>
+          <input id="f-org" name="org" placeholder="Nom du BDE, de l'asso…">
+        </div>
+        <div class="field">
+          <label for="f-type">Type de structure</label>
+          <select id="f-type" name="type">
+            <option>BDE</option><option>Lycée</option><option>Association</option><option>Bar / restaurant</option><option>Club sportif</option><option>Entreprise</option><option>Autre</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-qty">Quantité approximative</label>
+          <input id="f-qty" name="qty" type="number" min="1" placeholder="Ex. 50">
+        </div>
+        <div class="field full">
+          <span class="field-title">Produits</span>
+          <div class="chips">
+            <label><input type="checkbox" id="p-sweat" name="produits" value="Sweat"> Sweat</label>
+            <label><input type="checkbox" id="p-hoodie" name="produits" value="Hoodie"> Hoodie</label>
+            <label><input type="checkbox" id="p-tee" name="produits" value="T-shirt"> T-shirt</label>
+            <label><input type="checkbox" id="p-cap" name="produits" value="Casquette"> Casquette</label>
+            <label><input type="checkbox" id="p-tote" name="produits" value="Tote bag"> Tote bag</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-date">Pour quand ?</label>
+          <input id="f-date" name="date" type="date">
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" placeholder="vous@exemple.fr" required>
+        </div>
+        <div class="field full">
+          <label for="f-msg">Votre idée</label>
+          <textarea id="f-msg" name="msg" placeholder="Ex. un sweat bleu marine brodé avec notre logo sur le cœur."></textarea>
+        </div>
+        <div class="field full">
+          <button class="btn primary" type="submit">Envoyer ma demande</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span>© L'empreinte · Merch sur mesure</span>
+    <a href="#devis">Demander un devis</a>
+  </footer>
+</div>
+
+</body>
+</html>
